@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jean-Philippe Ackermann — Conférencier professionnel en Optimisme Managérial. 3 conférences incontournables pour dirigeants et collaborateurs." />
+  <title>Jean-Philippe Ackermann — Conférencier en Optimisme Managérial</title>
+
+  <!-- ============================================================
+       LIENS À REMPLACER
+       ============================================================ -->
+  <!-- À REMPLACER : URL de votre page Calendly -->
+  <!-- LIEN_CALENDLY = "https://calendly.com/VOTRE_LIEN" -->
+  <!-- À REMPLACER : URL vers le PDF de la brochure -->
+  <!-- LIEN_BROCHURE_PDF = "https://votre-domaine.com/brochure.pdf" -->
+  <!-- À REMPLACER : URL d'achat du livre -->
+  <!-- LIEN_LIVRE = "https://votre-lien-livre.com" -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bleu-nuit: #243A5E;
+      --bleu-profond: #1a2d4a;
+      --or: #E0B13A;
+      --or-clair: #f0c85a;
+      --blanc-casse: #F5F3EE;
+      --kaki: #8B8C5A;
+      --kaki-clair: #a6a771;
+      --ombre: rgba(0, 0, 0, 0.18);
+      --transition: 0.3s ease;
+      --radius: 14px;
+      --font-titre: 'Montserrat', sans-serif;
+      --font-script: 'Dancing Script', cursive;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-titre);
+      background-color: var(--blanc-casse);
+      color: var(--bleu-nuit);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: background var(--transition), box-shadow var(--transition);
+      padding: 0 2rem;
+    }
+
+    #navbar.scrolled {
+      background: rgba(24, 37, 62, 0.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blanc-casse);
+      line-height: 1.3;
+    }
+
+    .nav-logo span {
+      color: var(--or);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(245, 243, 238, 0.85);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--or);
+    }
+
+    .nav-cta {
+      background: var(--or);
+      color: var(--bleu-nuit) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--or-clair) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--blanc-casse);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(24, 37, 62, 0.98);
+      padding: 1.5rem 2rem 2rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: var(--blanc-casse);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(224,177,58,0.15);
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--bleu-profond) 0%, var(--bleu-nuit) 60%, #1e3a5f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative circles */
+    #hero::before,
+    #hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.06;
+    }
+
+    #hero::before {
+      width: 600px;
+      height: 600px;
+      background: var(--or);
+      top: -150px;
+      right: -150px;
+    }
+
+    #hero::after {
+      width: 400px;
+      height: 400px;
+      background: var(--or);
+      bottom: -100px;
+      left: -100px;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      color: var(--blanc-casse);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-subtitle-script {
+      font-family: var(--font-script);
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      color: var(--or);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle-text {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 243, 238, 0.7);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-separator {
+      width: 60px;
+      height: 2px;
+      background: var(--or);
+      margin: 0 auto 2.5rem;
+      border-radius: 2px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--blanc-casse);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 3rem;
+      opacity: 0.92;
+    }
+
+    .hero-tagline strong {
+      font-weight: 700;
+      color: var(--or);
+      font-style: normal;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-family: var(--font-titre);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--or);
+      color: var(--bleu-nuit);
+      box-shadow: 0 4px 20px rgba(224, 177, 58, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--or-clair);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(224, 177, 58, 0.45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--blanc-casse);
+      border: 2px solid rgba(245, 243, 238, 0.5);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--or);
+      color: var(--or);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--bleu-nuit);
+      border: 2px solid var(--bleu-nuit);
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--bleu-nuit);
+      color: var(--blanc-casse);
+      transform: translateY(-2px);
+    }
+
+    .btn-gold-dark {
+      background: var(--or);
+      color: var(--bleu-nuit);
+      box-shadow: 0 4px 16px rgba(224,177,58,0.3);
+    }
+
+    .btn-gold-dark:hover {
+      background: var(--or-clair);
+      transform: translateY(-2px);
+    }
+
+    /* =============================================
+       SECTIONS — LAYOUT
+    ============================================= */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-title-script {
+      font-family: var(--font-script);
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      color: var(--or);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      font-weight: 400;
+      opacity: 0.85;
+      max-width: 680px;
+      margin-bottom: 3rem;
+    }
+
+    /* Dotted gold separator */
+    .dotted-sep {
+      border: none;
+      border-top: 2px dashed rgba(224, 177, 58, 0.4);
+      margin: 3.5rem 0;
+    }
+
+    /* =============================================
+       SECTION — CONSTAT (dark)
+    ============================================= */
+    #constat {
+      background: var(--bleu-nuit);
+      color: var(--blanc-casse);
+    }
+
+    #constat .section-lead {
+      color: rgba(245,243,238,0.8);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(224, 177, 58, 0.18);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.6rem;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(224, 177, 58, 0.45);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--or);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .card-body {
+      font-size: 0.9rem;
+      color: rgba(245,243,238,0.8);
+      line-height: 1.65;
+    }
+
+    /* Transition banner */
+    .banner-transition {
+      background: linear-gradient(90deg, rgba(224,177,58,0.12), rgba(224,177,58,0.22), rgba(224,177,58,0.12));
+      border-left: 4px solid var(--or);
+      border-right: 4px solid var(--or);
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      color: var(--blanc-casse);
+      font-style: italic;
+    }
+
+    /* =============================================
+       SECTION — STRATÉGIE (light)
+    ============================================= */
+    #strategie {
+      background: var(--blanc-casse);
+      color: var(--bleu-nuit);
+    }
+
+    .affirmations {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .affirmation {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 2px 14px var(--ombre);
+      border-left: 4px solid var(--or);
+    }
+
+    .affirmation-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--or);
+      color: var(--bleu-nuit);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .affirmation p {
+      font-size: 0.95rem;
+      color: var(--bleu-nuit);
+      line-height: 1.65;
+    }
+
+    .benefices-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--bleu-nuit);
+      margin-bottom: 1.2rem;
+    }
+
+    .benefices-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .benefices-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .benefices-list li::before {
+      content: '◆';
+      color: var(--or);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .benefices-list strong {
+      color: var(--or);
+      font-weight: 700;
+    }
+
+    /* =============================================
+       SECTION — CONFÉRENCES (dark)
+    ============================================= */
+    #conferences {
+      background: var(--bleu-profond);
+      color: var(--blanc-casse);
+    }
+
+    #conferences .section-title {
+      color: var(--blanc-casse);
+    }
+
+    .conferences-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .conf-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(224,177,58,0.22);
+      border-radius: var(--radius);
+      padding: 2.2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .conf-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(224,177,58,0.55);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+
+    .conf-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--or), var(--or-clair));
+    }
+
+    .conf-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.4rem;
+    }
+
+    .conf-theme {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--kaki-clair);
+      margin-bottom: 1rem;
+    }
+
+    .conf-title-script {
+      font-family: var(--font-script);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      color: var(--blanc-casse);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .conf-format {
+      font-size: 0.8rem;
+      color: rgba(245,243,238,0.6);
+      margin-bottom: 0.3rem;
+      font-style: italic;
+    }
+
+    .conf-public {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--or);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .conf-sep {
+      border: none;
+      border-top: 1px dashed rgba(224,177,58,0.3);
+      margin: 1.4rem 0;
+    }
+
+    .conf-section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--kaki-clair);
+      margin-bottom: 0.7rem;
+    }
+
+    .conf-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .conf-list li {
+      font-size: 0.87rem;
+      color: rgba(245,243,238,0.8);
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .conf-list li::before {
+      content: '→';
+      color: var(--or);
+      flex-shrink: 0;
+      font-weight: 700;
+      margin-top: 0.05em;
+    }
+
+    .conf-accroche {
+      font-size: 0.95rem;
+      color: var(--blanc-casse);
+      font-style: italic;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .conf-desc {
+      font-size: 0.87rem;
+      color: rgba(245,243,238,0.75);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    .conf-quote {
+      border-left: 3px solid var(--or);
+      padding: 0.8rem 1rem;
+      background: rgba(224,177,58,0.07);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--or-clair);
+      margin-top: 1.2rem;
+    }
+
+    /* =============================================
+       SECTION — POURQUOI JPA (light)
+    ============================================= */
+    #pourquoi {
+      background: var(--blanc-casse);
+      color: var(--bleu-nuit);
+    }
+
+    .jpa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .jpa-visual {
+      background: linear-gradient(145deg, var(--bleu-nuit), var(--bleu-profond));
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      color: var(--blanc-casse);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .jpa-visual::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(224,177,58,0.1);
+    }
+
+    .jpa-initials {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--or);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--bleu-nuit);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 0 6px rgba(224,177,58,0.2);
+    }
+
+    .jpa-visual-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .jpa-visual-role {
+      font-family: var(--font-script);
+      font-size: 1.2rem;
+      color: var(--or);
+      margin-bottom: 1.5rem;
+    }
+
+    .jpa-stats {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .jpa-stat {
+      text-align: center;
+    }
+
+    .jpa-stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--or);
+      line-height: 1;
+    }
+
+    .jpa-stat-label {
+      font-size: 0.72rem;
+      color: rgba(245,243,238,0.7);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .jpa-content .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .jpa-points {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .jpa-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .jpa-point-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: rgba(224,177,58,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .jpa-point-text {
+      font-size: 0.9rem;
+      color: var(--bleu-nuit);
+      line-height: 1.6;
+    }
+
+    .jpa-point-text strong {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .jpa-exergue {
+      background: var(--bleu-nuit);
+      color: var(--blanc-casse);
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      font-family: var(--font-script);
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      text-align: center;
+      color: var(--or);
+      margin-bottom: 2rem;
+    }
+
+    .jpa-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* =============================================
+       SECTION — CTA FINAL (dark)
+    ============================================= */
+    #contact {
+      background: linear-gradient(160deg, var(--bleu-profond) 0%, var(--bleu-nuit) 100%);
+      color: var(--blanc-casse);
+      text-align: center;
+    }
+
+    #contact .section-title {
+      color: var(--blanc-casse);
+    }
+
+    .cta-bandeau {
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(245,243,238,0.85);
+      line-height: 1.7;
+    }
+
+    .cta-bandeau strong {
+      color: var(--or);
+    }
+
+    .cta-center {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .contact-block {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      color: rgba(245,243,238,0.85);
+      transition: color var(--transition);
+    }
+
+    .contact-item:hover {
+      color: var(--or);
+    }
+
+    .contact-item .icon {
+      font-size: 1.1rem;
+    }
+
+    hr.dotted-sep-dark {
+      border: none;
+      border-top: 1px dashed rgba(224,177,58,0.25);
+      margin: 2.5rem 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(224,177,58,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(245,243,238,0.7);
+      font-size: 1.1rem;
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .social-link:hover {
+      border-color: var(--or);
+      color: var(--or);
+      transform: translateY(-3px);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: #111e30;
+      color: rgba(245,243,238,0.45);
+      text-align: center;
+      padding: 1.8rem 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    footer a {
+      color: rgba(224,177,58,0.6);
+      transition: color var(--transition);
+    }
+
+    footer a:hover {
+      color: var(--or);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .jpa-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 3.5rem 1.2rem;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .conferences-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-block {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .jpa-btns {
+        flex-direction: column;
+      }
+    }
+
+    /* =============================================
+       SCROLL ANIMATIONS
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        Jean-Philippe Ackermann<br>
+        <span>Conférencier — Optimisme Managérial</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#constat">Les défis</a></li>
+        <li><a href="#strategie">L'optimisme</a></li>
+        <li><a href="#conferences">Conférences</a></li>
+        <li><a href="#pourquoi">Jean-Philippe</a></li>
+        <!-- À REMPLACER : remplacez # par LIEN_CALENDLY -->
+        <li><a href="#" class="nav-cta">Réserver</a></li><!-- À REMPLACER -->
+      </ul>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="menu">
+    <a href="#constat" role="menuitem">Les défis</a>
+    <a href="#strategie" role="menuitem">L'optimisme</a>
+    <a href="#conferences" role="menuitem">Conférences</a>
+    <a href="#pourquoi" role="menuitem">Jean-Philippe</a>
+    <!-- À REMPLACER : remplacez # par LIEN_CALENDLY -->
+    <a href="#" role="menuitem" style="color: var(--or);">Réserver un échange</a><!-- À REMPLACER -->
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero" aria-label="Accueil">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Conférencier professionnel</p>
+      <h1 class="hero-name">Jean-Philippe Ackermann</h1>
+      <p class="hero-subtitle-script">Optimisme Managérial</p>
+      <p class="hero-subtitle-text">Conférencier professionnel</p>
+      <div class="hero-separator" aria-hidden="true"></div>
+      <p class="hero-tagline">
+        <strong>Pourquoi choisir des conférences optimistes ?</strong><br>
+        Parce que la performance durable commence par un état d'esprit et qu'il se choisit, se cultive, se transmet.
+      </p>
+      <div class="hero-btns">
+        <!-- À REMPLACER : remplacez # par LIEN_CALENDLY -->
+        <a href="#" class="btn btn-primary">Réserver un échange</a><!-- À REMPLACER -->
+        <a href="#conferences" class="btn btn-secondary">Découvrir les conférences</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONSTAT ==================== -->
+  <section id="constat" aria-labelledby="constat-titre">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">Le contexte</p>
+      <h2 class="section-title reveal" id="constat-titre">Les défis des dirigeants en 2026</h2>
+      <p class="section-lead reveal">
+        Les dirigeants font face à des défis majeurs qui mettent en péril la motivation des équipes et la performance de leur entreprise.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">💡</div>
+          <h3 class="card-title">Désengagement des collaborateurs</h3>
+          <p class="card-body">La quête de sens et la montée du « quiet quitting » redéfinissent les attentes et fragilisent les organisations qui n'y répondent pas.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🎯</div>
+          <h3 class="card-title">Fidélisation des talents</h3>
+          <p class="card-body">L'attractivité des entreprises est en baisse. Recruter coûte cher, retenir les meilleurs est devenu un enjeu stratégique à part entière.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">📈</div>
+          <h3 class="card-title">Pression sur la performance</h3>
+          <p class="card-body">Innover tout en maîtrisant les coûts, dans un environnement incertain : la double contrainte qui épuise les équipes dirigeantes.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🧠</div>
+          <h3 class="card-title">Stress et solitude du dirigeant</h3>
+          <p class="card-body">La charge mentale croissante face à l'incertitude isole. Le dirigeant doit rester fort — mais qui l'accompagne dans cette solitude ?</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🤝</div>
+          <h3 class="card-title">Management intergénérationnel</h3>
+          <p class="card-body">Les incompréhensions face aux attentes de la Gen Z creusent des fossés. L'enjeu : créer un langage commun, bâti sur le sens et l'authenticité.</p>
+        </article>
+      </div>
+
+      <div class="banner-transition reveal" role="note">
+        « Face à ces défis, l'optimisme et le bien-être sont des nécessités stratégiques. »
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STRATÉGIE ==================== -->
+  <section id="strategie" aria-labelledby="strategie-titre">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">La réponse</p>
+      <p class="section-title-script reveal">Pourquoi l'optimisme ?</p>
+      <h2 class="section-title reveal" id="strategie-titre">L'optimisme managérial, une stratégie puissante</h2>
+
+      <div class="affirmations">
+        <div class="affirmation reveal">
+          <div class="affirmation-num" aria-hidden="true">1</div>
+          <p>Parce qu'une culture d'entreprise axée sur l'optimisme favorise la <strong>créativité</strong>, la <strong>résilience</strong> et la <strong>productivité</strong>.</p>
+        </div>
+        <div class="affirmation reveal">
+          <div class="affirmation-num" aria-hidden="true">2</div>
+          <p>Parce qu'un dirigeant optimiste insuffle une énergie positive qui entraîne ses équipes vers le succès.</p>
+        </div>
+        <div class="affirmation reveal">
+          <div class="affirmation-num" aria-hidden="true">3</div>
+          <p>Parce qu'une entreprise qui mise sur l'humain attire et fidélise les talents.</p>
+        </div>
+      </div>
+
+      <hr class="dotted-sep" aria-hidden="true" />
+
+      <p class="benefices-title reveal">Les bénéfices pour votre organisation</p>
+      <ul class="benefices-list reveal" aria-label="Liste des bénéfices">
+        <li><strong>Renforcer</strong> l'engagement et la motivation des équipes</li>
+        <li><strong>Attirer et fidéliser</strong> les meilleurs talents</li>
+        <li><strong>Adopter</strong> un leadership positif et inspirant</li>
+        <li><strong>Développer</strong> une entreprise résiliente et performante</li>
+        <li><strong>Favoriser</strong> un climat de travail bienveillant</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== CONFÉRENCES ==================== -->
+  <section id="conferences" aria-labelledby="conferences-titre">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">Le cœur de la démarche</p>
+      <h2 class="section-title reveal" id="conferences-titre">
+        3 conférences incontournables
+      </h2>
+      <p class="section-lead reveal" style="color: rgba(245,243,238,0.75);">
+        Trois formats uniques, une même conviction : l'optimisme est une décision et cette décision change tout.
+      </p>
+
+      <div class="conferences-grid">
+
+        <!-- Conférence 1 -->
+        <article class="conf-card reveal" aria-labelledby="conf1-titre">
+          <p class="conf-number">Conférence 01</p>
+          <p class="conf-theme">Optimisme &amp; Performance</p>
+          <h3 class="conf-title-script" id="conf1-titre">«&nbsp;L'optimisme, moteur de votre réussite&nbsp;!&nbsp;»</h3>
+          <p class="conf-format">La conférence immersive et énergisante</p>
+          <p class="conf-public">&#128100; Dirigeants &amp; collaborateurs</p>
+
+          <hr class="conf-sep" aria-hidden="true" />
+
+          <p class="conf-section-label">Elle répond à ces enjeux</p>
+          <ul class="conf-list">
+            <li>Maintenir une motivation et une énergie durables dans les équipes</li>
+            <li>Surmonter le stress et transformer les défis en opportunités</li>
+            <li>Créer un climat de confiance et d'innovation, même en temps d'incertitude</li>
+            <li>Fédérer autour d'un état d'esprit positif pour stimuler la productivité</li>
+          </ul>
+
+          <hr class="conf-sep" aria-hidden="true" />
+
+          <p class="conf-section-label">Ce que vos équipes en retirent</p>
+          <ul class="conf-list">
+            <li>Un chemin clair pour transformer les pensées en résultats</li>
+            <li>Les 6 clés du succès pour fédérer, motiver et performer durablement</li>
+            <li>Une méthodologie pragmatique pour insuffler un état d'esprit optimiste</li>
+            <li>Des actions simples et efficaces pour mobiliser les collaborateurs</li>
+          </ul>
+
+          <div class="conf-quote">
+            « Cette conférence ne se contente pas d'inspirer, elle fait passer à l'action. »
+          </div>
+        </article>
+
+        <!-- Conférence 2 -->
+        <article class="conf-card reveal" aria-labelledby="conf2-titre">
+          <p class="conf-number">Conférence 02</p>
+          <p class="conf-theme">Optimisme &amp; Bonheur</p>
+          <h3 class="conf-title-script" id="conf2-titre">«&nbsp;Le bonheur&nbsp;: une décision qui change tout&nbsp;»</h3>
+          <p class="conf-format">La conférence-spectacle qui rebooste</p>
+          <p class="conf-public">&#128100; Dirigeants &amp; collaborateurs</p>
+
+          <hr class="conf-sep" aria-hidden="true" />
+
+          <p class="conf-accroche">Et si le bonheur n'était pas une destination… mais un choix&nbsp;?</p>
+
+          <p class="conf-desc">
+            Dans un monde saturé de mauvaises nouvelles, de crises et de doutes, Jean-Philippe pose une question simple mais puissante. Avec émotion, énergie débordante et les chants envoûtants de Lorelyne Foti, cette conférence-spectacle bouscule les idées reçues.
+          </p>
+
+          <p class="conf-section-label">Un format unique</p>
+          <ul class="conf-list">
+            <li>Des vidéos et de la musique pour déclencher des émotions et ancrer les messages</li>
+            <li>Des moments d'humour et de légèreté pour ouvrir les esprits</li>
+            <li>9 clés concrètes inspirées d'histoires vraies et de situations vécues</li>
+            <li>Des démonstrations interactives pour expérimenter la puissance de l'optimisme en direct</li>
+          </ul>
+
+          <div class="conf-quote">
+            « Ce n'est pas la réussite qui mène au bonheur, mais le bonheur qui mène à la réussite. »
+          </div>
+        </article>
+
+        <!-- Conférence 3 -->
+        <article class="conf-card reveal" aria-labelledby="conf3-titre">
+          <p class="conf-number">Conférence 03</p>
+          <p class="conf-theme">Optimisme &amp; Bien-être</p>
+          <h3 class="conf-title-script" id="conf3-titre">«&nbsp;L'art de créer une entreprise inspirante et engagée&nbsp;»</h3>
+          <p class="conf-format">La conférence qui transforme le management (à l'heure de la Gen Z)</p>
+          <p class="conf-public">&#128100; Dirigeants</p>
+
+          <hr class="conf-sep" aria-hidden="true" />
+
+          <p class="conf-desc">
+            Le bien-être n'est pas un bonus, mais la nouvelle base de la réussite collective. Les entreprises qui réussissent sont celles où les collaborateurs se sentent utiles, respectés, engagés… et fiers. D'autant plus avec la Génération Z, en quête de sens, d'équilibre et d'un management authentique.
+          </p>
+
+          <p class="conf-section-label">Double promesse pour les dirigeants</p>
+          <ul class="conf-list">
+            <li>Fidéliser et mieux recruter en créant une culture forte et durable</li>
+            <li>Des collaborateurs plus engagés, motivés, alignés, devenus ambassadeurs positifs</li>
+          </ul>
+
+          <hr class="conf-sep" aria-hidden="true" />
+
+          <p class="conf-section-label">Aperçu du contenu</p>
+          <ul class="conf-list">
+            <li>Les 3 responsabilités du dirigeant : pouvoir d'achat, liberté, santé mentale</li>
+            <li>Les valeurs fondamentales : humanisme, altruisme, optimisme</li>
+            <li>Les 5 dimensions du bien-être : professionnel, financier, relationnel, physique, spirituel</li>
+            <li>Les leviers d'engagement et de démotivation</li>
+            <li>Les 7 exigences d'un nouveau management inspirant</li>
+          </ul>
+
+          <div class="conf-quote">
+            « Le bien-être est une décision stratégique… qui change tout. »
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POURQUOI JPA ==================== -->
+  <section id="pourquoi" aria-labelledby="pourquoi-titre">
+    <div class="section-inner">
+      <div class="jpa-grid">
+
+        <div class="jpa-visual reveal" aria-hidden="true">
+          <div class="jpa-initials">JPA</div>
+          <p class="jpa-visual-name">Jean-Philippe Ackermann</p>
+          <p class="jpa-visual-role">Leader de l'Optimisme</p>
+          <div class="jpa-stats">
+            <div class="jpa-stat">
+              <div class="jpa-stat-number">12+</div>
+              <div class="jpa-stat-label">ans de scène</div>
+            </div>
+            <div class="jpa-stat">
+              <div class="jpa-stat-number">21 ans</div>
+              <div class="jpa-stat-label"> il choisit d'être heureux</div>
+            </div>
+            <div class="jpa-stat">
+              <div class="jpa-stat-number">AFCP</div>
+              <div class="jpa-stat-label">Président</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jpa-content">
+          <p class="section-eyebrow reveal">Le conférencier</p>
+          <h2 class="section-title reveal" id="pourquoi-titre">Pourquoi travailler avec Jean-Philippe&nbsp;?</h2>
+
+          <div class="jpa-points">
+            <div class="jpa-point reveal">
+              <div class="jpa-point-icon" aria-hidden="true">🚀</div>
+              <div class="jpa-point-text">
+                <strong>Un engagement précoce pour le succès</strong>
+                À 21 ans, il choisit d'être heureux. À 27 ans, il sauve une entreprise en crise grâce à une approche audacieuse alliant performance et bien-être.
+              </div>
+            </div>
+            <div class="jpa-point reveal">
+              <div class="jpa-point-icon" aria-hidden="true">🏛️</div>
+              <div class="jpa-point-text">
+                <strong>Un entrepreneur passionné par l'Humain</strong>
+                Fondateur de son cabinet de conseil en développement et restructuration d'entreprise, professeur à l'université, il prône un leadership humain où l'optimisme devient un vrai levier de réussite.
+              </div>
+            </div>
+            <div class="jpa-point reveal">
+              <div class="jpa-point-icon" aria-hidden="true">🌍</div>
+              <div class="jpa-point-text">
+                <strong>Un leader reconnu en France et à l'international</strong>
+                Conférencier depuis plus de 12 ans, président de l'AFCP (Association Française des Conférenciers Professionnels), sportif passionné.
+              </div>
+            </div>
+            <div class="jpa-point reveal">
+              <div class="jpa-point-icon" aria-hidden="true">📖</div>
+              <div class="jpa-point-text">
+                <strong>Auteur</strong>
+                «&nbsp;Aussi fine soit la tranche, elle a toujours deux faces&nbsp;» un livre qui prolonge la pensée et la méthode.
+              </div>
+            </div>
+          </div>
+
+          <div class="jpa-exergue reveal">
+            « L'optimisme n'est pas une naïveté, c'est une puissance qui transforme. »
+          </div>
+
+          <div class="jpa-btns reveal">
+            <!-- À REMPLACER : remplacez # par LIEN_LIVRE -->
+            <a href="#" class="btn btn-outline-dark">Découvrir le livre</a><!-- À REMPLACER -->
+            <!-- À REMPLACER : remplacez # par LIEN_BROCHURE_PDF -->
+            <a href="#" class="btn btn-gold-dark">Télécharger la brochure</a><!-- À REMPLACER -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section id="contact" aria-labelledby="contact-titre">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal" style="color: var(--or);">Passons à l'action</p>
+      <h2 class="section-title reveal" id="contact-titre">Organisons votre intervention</h2>
+
+      <p class="cta-bandeau reveal">
+        En réservant ces conférences, vous donnez à vos dirigeants et collaborateurs les outils pour
+        <strong>transformer l'optimisme en succès durable</strong>.
+        Une intervention sur-mesure, adaptée à votre contexte, vos enjeux et vos équipes.
+      </p>
+
+      <div class="cta-center reveal">
+        <!-- À REMPLACER : remplacez # par LIEN_CALENDLY -->
+        <a href="#" class="btn btn-primary" style="font-size: 1rem; padding: 1.1rem 2.6rem;">
+          Organisons votre intervention
+        </a><!-- À REMPLACER -->
+      </div>
+
+      <hr class="dotted-sep-dark" aria-hidden="true" />
+
+      <div class="contact-block reveal" role="list" aria-label="Coordonnées">
+        <a href="mailto:jpackermann@vivaldi-conseil.com" class="contact-item" role="listitem">
+          <span class="icon" aria-hidden="true">📧</span>
+          jpackermann@vivaldi-conseil.com
+        </a>
+        <a href="tel:+33661122545" class="contact-item" role="listitem">
+          <span class="icon" aria-hidden="true">📞</span>
+          +33 6 61 12 25 45
+        </a>
+        <a href="https://jeanphilippeackermann.com" class="contact-item" target="_blank" rel="noopener noreferrer" role="listitem">
+          <span class="icon" aria-hidden="true">🌍</span>
+          jeanphilippeackermann.com
+        </a>
+      </div>
+
+      <hr class="dotted-sep-dark" aria-hidden="true" />
+
+      <div class="social-links reveal" aria-label="Réseaux sociaux">
+        <!-- À REMPLACER : ajoutez les vraies URLs des réseaux sociaux -->
+        <a href="#" class="social-link" aria-label="YouTube" title="YouTube"><!-- À REMPLACER -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn" title="LinkedIn"><!-- À REMPLACER -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.75c0-1.4-.5-2.25-1.75-2.25A1.88 1.88 0 0 0 12.5 13.5a2 2 0 0 0-.1.7V19H9v-9h3v1.25a3.07 3.07 0 0 1 2.75-1.5c2 0 3.25 1.31 3.25 4.13z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram" title="Instagram"><!-- À REMPLACER -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook" title="Facebook"><!-- À REMPLACER -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>
+      &copy; 2026 Jean-Philippe Ackermann — Conférencier professionnel en Optimisme Managérial.
+      <a href="https://jeanphilippeackermann.com" target="_blank" rel="noopener noreferrer">jeanphilippeackermann.com</a>
+    </p>
+  </footer>
+
+  <!-- ==================== JS ==================== -->
+  <script>
+    // ---- Navbar scroll ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ---- Hamburger menu ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ---- Scroll reveal ----
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
